@@ -1,0 +1,33 @@
+{
+ "id": "/",
+ "name": "EMT – Gestion de l'église",
+ "short_name": "EMT",
+ "description": "Gestion de l'Église Missionnaire Témoignage : membres, présences, finances, projets, communication.",
+ "lang": "fr",
+ "start_url": "/",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#14294d",
+ "theme_color": "#1f3f75",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
