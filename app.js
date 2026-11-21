@@ -367,7 +367,7 @@ function vRapMensuel(){
   <div class="grid2 sec"><div class="card"><h2>Entrées par catégorie</h2>${tbl(ins)}</div><div class="card"><h2>Sorties par catégorie</h2>${tbl(outs)}</div></div>
   <div class="card sec"><h2>Contributions par membre – année ${y}</h2>${dl.length?`<table class="t"><tr><th>Membre</th><th class="n">FC</th><th class="n">$</th></tr>${dl.map(x=>`<tr><td>${esc(fullName(x.m))}</td><td class="n">${money(x.v.CDF,'CDF')}</td><td class="n">${money(x.v.USD,'USD')}</td></tr>`).join('')}</table>`:'<div class="muted small">Aucune contribution liée à un membre cette année. Choisissez le membre lors de la saisie d\'une dîme ou d\'un don.</div>'}</div>`;
 }
-const APP_VERSION='21/11/2026';
+const APP_VERSION='21/11/2026 – prêts';
 function vParametres(){
   const c=cfg(),admin=ROLE==='admin';
   const theme=getTheme();
