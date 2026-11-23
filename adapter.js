@@ -221,6 +221,19 @@
     }
   };
 
+  /* ---------------- Sauvegardes automatiques (espace privé « sauvegardes », administrateur seulement) ---------------- */
+  window.EMT_BACKUP = {
+    async upload(name, text) {
+      const { error } = await sb.storage.from('sauvegardes').upload(name, new Blob([text], { type: 'application/json' }), { contentType: 'application/json', upsert: true });
+      if (error) throw error;
+      const { data } = await sb.storage.from('sauvegardes').list('', { limit: 100, sortBy: { column: 'name', order: 'desc' } });
+      const old = (data || []).filter(f => /^sauvegarde-/.test(f.name)).slice(8).map(f => f.name);
+      if (old.length) await sb.storage.from('sauvegardes').remove(old);
+    },
+    async list() { const { data, error } = await sb.storage.from('sauvegardes').list('', { limit: 100, sortBy: { column: 'name', order: 'desc' } }); if (error) throw error; return (data || []).filter(f => /\.json$/.test(f.name)); },
+    async download(name) { const { data, error } = await sb.storage.from('sauvegardes').download(name); if (error) throw error; return await data.text(); }
+  };
+
   /* ---------------- Appel des fonctions serveur (message d'erreur clair) ---------------- */
   async function invokeFn(name, body) {
     const { data, error } = await sb.functions.invoke(name, { body });
